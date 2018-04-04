@@ -21,7 +21,8 @@
     <% if current_user.role_id == 3 %>
       <br>
       <h3>My Doctors</h3>
-      <table>
+      <table class="table">
+        <div class="nav-item active">
         <thead>
         <tr>
           <th>Appointment ID</th>
@@ -40,13 +41,15 @@
           </tr>
         <% end %>
         </tbody>
+        </div>
       </table>
     <% end %>
 
     <% if current_user.role_id == 2 %>
       <br>
       <h3>My Patients</h3>
-      <table>
+      <table class="table">
+        <div class="nav-item active">
         <thead>
         <tr>
           <th>Appointment ID</th>
@@ -65,13 +68,30 @@
           </tr>
         <% end %>
         </tbody>
+        </div>
       </table>
     <% end %>
 
     <% if current_user.role_id == 3 %>
+
+      <div class="jumbotron jumbotron-fluid">
+        <div class="row">
+          <div class="col">
+          </div>
+          <div class="col">
+          </div>
+          <div class="col">
+            <figure class="figure">
+              <%= line_chart @plot_test, id: "tests_chart", width: "800px", height: "500px" %>
+            </figure>
+          </div>
+        </div>
+
+      </div>
       <br>
       <h3>Tests</h3>
-      <table>
+      <table class="table">
+        <div class="nav-item active">
         <thead>
         <tr>
           <th>Test ID</th>
@@ -100,6 +120,7 @@
           </tr>
         <% end %>
         </tbody>
+        </div>
       </table>
     <% end %>
 

@@ -8,11 +8,25 @@ class TestController < ApplicationController
     @tests = Test.where('patient_id IN (?)', params[:patient_id]).order(updated_at: :desc)
   end
 
+  
   # GET /tests/1
   # GET /tests/1.json
   def show
     @test = Test.find(params[:id])
+
+
+
+  
+
+    
+
+
+
+
+
   end
+
+
 
   # GET /tests/new
   def new
@@ -89,5 +103,10 @@ class TestController < ApplicationController
   def set_test
     @test = Test.find(params[:id])
   end
+
+
+
+
+
 
 end

@@ -1,11 +1,12 @@
 class PatientController < ApplicationController
   before_action :authenticate_user!
   before_action :set_patient, only: [:show, :edit, :update, :destroy]
+  helper_method :sort_column, :sort_direction
 
 
   def index
     if current_user.role_id == 1
-      @patients = Patient.all.order(updated_at: :desc)
+      @patients = Patient.order(sort_column + " " + sort_direction).paginate(:per_page => 15, :page => params[:page])
     else
       render :show
     end
@@ -13,7 +14,19 @@ class PatientController < ApplicationController
 
   def show
     @patient = Patient.find(params[:id])
+
+
+
+
+    
+
+          
+  
+
+
   end
+
+
 
   def new
     if current_user.role_id == 1
@@ -76,6 +89,14 @@ class PatientController < ApplicationController
   def patient_params
     params.require(:patient).permit(:first_name, :last_name, :email, :password, :password_confirmation, :dob, :gender,
                                  :contact, :username, :province, :city_village, :address_line_1, :role_id, :blood_type_id, :user_id)
+  end
+
+  def sort_column
+    Patient.column_names.include?(params[:sort]) ? params[:sort] : "id"
+  end
+
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
   end
 
 end

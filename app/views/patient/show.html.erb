@@ -15,9 +15,13 @@
     <br> <%= "City or Village: " %> <%= @patient.city_village %>
     <br> <%= "Address Line 1: " %> <%= @patient.address_line_1 %>
     <br> <%= "Contact: " %> <%= @patient.contact %>
-    <br> <h3>Appointments</h3>
+    
+  
 
-    <table>
+
+    <br> <h3>Appointments</h3>
+    <table class="table">
+      <div class="nav-item active">
       <thead>
       <tr>
         <th>Appointment ID</th>
@@ -38,10 +42,12 @@
         </tr>
       <% end %>
       </tbody>
+      </div>
     </table>
 
     <br> <h3>Tests</h3>
-    <table>
+    <table class="table">
+      <div class="nav-item active">
       <thead>
       <tr>
         <th>Test ID</th>
@@ -72,9 +78,15 @@
         </tr>
       <% end %>
       </tbody>
+      </div>
     </table>
   <% end %>
   <br>
 </div>
 
 <%= link_to "Back", :back %>
+
+<br>
+<br>
+<br>
+
